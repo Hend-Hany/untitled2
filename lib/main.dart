@@ -1,8 +1,11 @@
-
 import 'package:flutter/material.dart';
-import 'package:untitled2/view/register/invesror_sign_up.dart';
+import 'package:untitled2/view/investor_profile/profile_view.dart';
+import 'package:untitled2/view/investor_register/signup_view.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+
+void main() async {
+  await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -10,9 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: InvestorSignUp(),
+      builder: (context,child){
+        ScreenUtil.init(
+            context,
+            designSize: const Size(414, 896)
+        );
+        return child!;
+      },
+      home: InvestorProfile(),
     );
   }
 }
